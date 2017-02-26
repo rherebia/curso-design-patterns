@@ -1,5 +1,13 @@
 
-public abstract class TemplateDeImpostoCondicional implements Imposto {
+public abstract class TemplateDeImpostoCondicional extends Imposto {
+	
+	public TemplateDeImpostoCondicional() {
+		
+	}
+	
+	public TemplateDeImpostoCondicional(Imposto outroImposto) {
+		super(outroImposto);
+	}
 
 	public double calcula(Orcamento orcamento) {
 		if (deveUsarMaximaTaxacao(orcamento)) {
