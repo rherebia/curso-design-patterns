@@ -2,6 +2,7 @@
 public class Conta {
 
 	private String titular;
+	private String agencia;
 	private double saldo;
 	
 	public Conta(String titular, double saldo) {
@@ -20,5 +21,13 @@ public class Conta {
 	}
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
+	}
+
+	public String getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(String agencia) {
+		this.agencia = agencia;
 	}
 }
