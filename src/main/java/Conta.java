@@ -4,12 +4,15 @@ public class Conta {
 
 	private String titular;
 	private String agencia;
-	private double saldo;
+	protected double saldo;
 	private Calendar dataAbertura;
+	
+	protected EstadoDeUmaConta estadoAtual;
 	
 	public Conta(String titular, double saldo) {
 		this.titular = titular;
 		this.saldo = saldo;
+		estadoAtual = new ContaPositiva();
 	}
 	
 	public String getTitular() {
@@ -35,5 +38,13 @@ public class Conta {
 
 	public Calendar getDataAbertura() {
 		return dataAbertura;
+	}
+	
+	public void sacar(double valor) {
+		estadoAtual.sacar(this, valor);
+	}
+	
+	public void depositar(double valor) {
+		estadoAtual.depositar(this, valor);
 	}
 }
