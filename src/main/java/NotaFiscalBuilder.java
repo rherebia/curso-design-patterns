@@ -12,6 +12,12 @@ public class NotaFiscalBuilder {
 	private String observacoes;
 	private Calendar data = Calendar.getInstance();
 	
+	private List<AcaoAposGerarNota> todasAcoesASeremExecutadas = new ArrayList<AcaoAposGerarNota>();
+	
+	public void adicionaAcao(AcaoAposGerarNota acao) {
+		this.todasAcoesASeremExecutadas.add(acao);
+	}
+	
 	public NotaFiscalBuilder paraEmpresa(String razaoSocial) {
 		this.razaoSocial = razaoSocial;
 		return this;
@@ -40,6 +46,12 @@ public class NotaFiscalBuilder {
 	}
 	
 	public NotaFiscal constroi() {
-		return new NotaFiscal(razaoSocial, cnpj, data, valorBruto, impostos, todosItens, observacoes);
+		NotaFiscal notaFiscal = new NotaFiscal(razaoSocial, cnpj, data, valorBruto, impostos, todosItens, observacoes);
+		
+		for(AcaoAposGerarNota acao : todasAcoesASeremExecutadas) {
+			acao.executa(notaFiscal);
+		}
+		
+		return notaFiscal;
 	}
 }
