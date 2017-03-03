@@ -1,3 +1,6 @@
+package interpreter;
+
+import visitor.Visitor;
 
 public class Soma implements Expressao {
 
@@ -20,4 +23,9 @@ public class Soma implements Expressao {
 	public Expressao getDireita() {
 		return direita;
 	}
+
+	public void aceita(Visitor impressora) {
+		impressora.visitaSoma(this);
+	}
+	
 }

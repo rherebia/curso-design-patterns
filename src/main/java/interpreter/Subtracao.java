@@ -1,3 +1,6 @@
+package interpreter;
+
+import visitor.Visitor;
 
 public class Subtracao implements Expressao {
 
@@ -19,5 +22,9 @@ public class Subtracao implements Expressao {
 	
 	public Expressao getDireita() {
 		return direita;
+	}
+
+	public void aceita(Visitor impressora) {
+		impressora.visitaSubtracao(this);
 	}
 }

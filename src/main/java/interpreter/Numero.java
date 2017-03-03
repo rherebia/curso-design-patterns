@@ -1,3 +1,6 @@
+package interpreter;
+
+import visitor.Visitor;
 
 public class Numero implements Expressao {
 
@@ -13,5 +16,9 @@ public class Numero implements Expressao {
 	
 	public int getNumero() {
 		return numero;
+	}
+
+	public void aceita(Visitor impressora) {
+		impressora.visistaNumero(this);
 	}
 }
